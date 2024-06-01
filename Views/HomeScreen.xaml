@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarWash.Views.HomeScreen"
+             Title="Home"
+             xmlns:iOS="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:local2="clr-namespace:CarWash.Models"
+             iOS:Page.UseSafeArea="True"
+             Background="#333"
+             Shell.TabBarBackgroundColor="Black">
+
+    <ContentPage.Resources>
+        <local2:StringToColor x:Key="StringToColor" />
+    </ContentPage.Resources>
+
+    <Grid RowSpacing="0" ColumnSpacing="2" BackgroundColor="Transparent" 
+          RowDefinitions="0.23*,1.5*,0.33*,auto" 
+          ColumnDefinitions="*"
+          Padding="0">
+
+        <Grid Grid.Row="0"
+              Grid.ColumnSpan="2"
+              Margin="0,0,0,0"
+              VerticalOptions="FillAndExpand">
+
+            <Border Stroke="Transparent"
+                    StrokeShape="RoundRectangle 0,0,0,0"
+                    StrokeThickness="1">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#111"
+                                 Offset="0" />
+                        <GradientStop Color="#1a1a1a"
+                                 Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <Grid ColumnDefinitions="*,0.5*"
+                          RowDefinitions="*" 
+                          RowSpacing="3">
+
+                    <Label Grid.Row="0"
+                        Grid.Column="0"
+                        FontSize="22"
+                        Margin="15,0,0,0"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        Text="My Cars"
+                        BackgroundColor="Transparent"
+                        TextColor="LightGrey"/>
+
+                    <Button 
+                         Grid.Row="0"
+                         Grid.Column="1"
+                         FontSize="15"
+                         Margin="15,0,0,0"
+                         HorizontalOptions="End"
+                         VerticalOptions="Center"
+                         Text="Edit"
+                         ContentLayout="Left,4"
+                         ImageSource="edit_btn.png"
+                         BackgroundColor="Transparent"
+                         TextColor="#ccc"
+                         Clicked="goToManageCars"/>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="1"
+               Grid.ColumnSpan="2"
+               Margin="0,0,0,0"
+               VerticalOptions="FillAndExpand">
+
+            <Border Background="#191919"
+                Stroke="#151B24"
+                StrokeShape="RoundRectangle 0,0,0,0"
+                StrokeThickness="1">
+
+                <CollectionView x:Name="CarListCollectionView">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Stroke="#333"
+                                 Margin="7,6,7,2"   
+                                 MinimumWidthRequest="400"
+                                 StrokeThickness="1"
+                                 StrokeShape="RoundRectangle 10,10,10,10"
+                                 Background="#222"
+                                 Padding="14,12,1,12"
+                                 HorizontalOptions="Center">
+                                <Grid ColumnDefinitions="*,*,auto">
+                                    <HorizontalStackLayout>
+                                        <Rectangle Margin="0,0,0,0" Fill="{Binding Color, Converter={StaticResource StringToColor}, ConverterParameter=Default}"
+                                             WidthRequest="12"
+                                             HeightRequest="12">
+                                        </Rectangle>
+                                    </HorizontalStackLayout>
+                                    <HorizontalStackLayout Margin="30,0,0,0">
+                                        <VerticalStackLayout HorizontalOptions="Start" VerticalOptions="Center"  Grid.Column="0">
+                                        <Label TextColor="LightGrey" FontSize="17" Text="{Binding Make}"></Label>
+                                        <Label TextColor="LightGrey" FontSize="17" Text="{Binding Model}"></Label>
+                                        <Label TextColor="LightGrey" FontSize="17" Text="{Binding Year}"></Label>
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+                                    <HorizontalStackLayout VerticalOptions="Center"  HorizontalOptions="End" Grid.Column="2">
+                                        <Image HorizontalOptions="End" WidthRequest="91" Source="{Binding Icon}"></Image>
+                                    </HorizontalStackLayout>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
+
+        </Grid>
+
+        <Grid Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Margin="0,0,0,0"
+                VerticalOptions="Fill">
+
+            <Border Stroke="Transparent"
+                    Background="Transparent"
+                    StrokeThickness="1"
+                    Padding="0">
+     
+                <Grid ColumnDefinitions="*"
+                        RowDefinitions="0.3*,*" 
+                        RowSpacing="3">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0,1">
+                            <GradientStop Color="#303030"
+                                 Offset="0" />
+                            <GradientStop Color="#111"
+                                Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+
+                    <Button Text="Schedule"
+                            x:Name="ScheduleBtn"
+                            FontSize="17"
+                            Margin="25,0,25,16" 
+                            Grid.Column="0" 
+                            TextColor="#222"
+                            VerticalOptions="End"
+                            Grid.Row="1" 
+                            ContentLayout="Left, 5"
+                            ImageSource="schedule.png"
+                            Padding="5,11,5,11"
+                            MaximumWidthRequest="370"
+                            Clicked="goToSchedule">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="#eee"
+                                    Offset="0.1" />
+                                <GradientStop Color="#777"
+                                    Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+
+                </Grid>
+            </Border>
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

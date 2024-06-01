@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarWash.Views.VehicleAdditionPage"
+             Title="Add a car"
+             Background="#111">
+
+    <Grid RowDefinitions="*,Auto">
+        <VerticalStackLayout VerticalOptions="Center">
+
+
+            <Image Margin="0,0,0,15"  WidthRequest="105" Source="car_list_icon.png"></Image>
+
+            <Border Stroke="#151B24"
+                StrokeShape="RoundRectangle 10,10,10,10"
+                StrokeThickness="1"
+                Padding="20" 
+                MaximumWidthRequest="400"
+                Margin="10"
+                Background="#222">
+                <VerticalStackLayout>
+                    <Label Text="Details:"
+                           TextColor="AliceBlue"
+                           FontSize="16"
+                           HorizontalTextAlignment="Center"
+                           Margin="0,0,0,10"
+                           FontAttributes="Bold">
+                    </Label>
+
+                    <Entry x:Name="makeEntry"
+                        Placeholder="Make:"
+                        Margin="0,10,0,10"
+                        CharacterSpacing="0.5"
+                        TextColor="#eee"
+                        ClearButtonVisibility="WhileEditing"
+                        Background="#333"
+                        FontSize="19"/>
+
+                    <Entry x:Name="modelEntry"
+                        Placeholder="Model:"
+                        Margin="0,10,0,10"
+                        CharacterSpacing="0.5"
+                        TextColor="#eee"
+                        ClearButtonVisibility="WhileEditing"
+                        Background="#333"
+                        FontSize="19"/>
+
+                    <Entry x:Name="yearEntry"
+                         Placeholder="Year:"
+                         CharacterSpacing="0.5"
+                         TextColor="#eee"
+                         Margin="0,10,0,10"                  
+                         ClearButtonVisibility="WhileEditing"
+                         Background="#333"
+                         FontSize="19"/>
+
+                    <VerticalStackLayout VerticalOptions="Center"  HorizontalOptions="Start">
+                        <Picker x:Name="ColorPicker"
+                            Background="#222"
+                            TextColor="#eee"
+                            SelectedIndex="1"
+                            TitleColor="AliceBlue"
+                            Title="Color:">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Black</x:String>
+                                    <x:String>Silver</x:String>
+                                    <x:String>White</x:String>
+                                    <x:String>Yellow</x:String>
+                                    <x:String>Orange</x:String>
+                                    <x:String>Red</x:String>
+                                    <x:String>Green</x:String>
+                                    <x:String>Blue</x:String>
+                                    <x:String>Pink</x:String>
+                                    <x:String>Gray</x:String>
+                                    <x:String>Purple</x:String>
+                                    <x:String>Brown</x:String>
+                                    <x:String>BurlyWood</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Column="0" Grid.Row="1" VerticalOptions="End" Margin="5">
+            <Button x:Name="addBtn"
+               Text="Done" 
+               FontSize="20"
+               Margin="10"
+               TextColor="#222"
+               MaximumWidthRequest="400"
+               IsEnabled="True"
+               Clicked="addCar">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#eee"
+                            Offset="0.1" />
+                        <GradientStop Color="#777"
+                            Offset="1.0" />
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+
+        </VerticalStackLayout>
+
+    </Grid>
+
+</ContentPage>
